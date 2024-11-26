@@ -7,9 +7,9 @@ BookRouter.get('/',allBooks)
 BookRouter.get('/favorites',getfavoriteBook)
 BookRouter.get('/book-recommended',getRecommendedBook);
 BookRouter.get('/:id',getBookById);
-BookRouter.patch('/:id',updateBook);
+BookRouter.put('/:id',updateBook);
 BookRouter.patch('/toggle-favorite/:id',toggleFavoriteBook)
-BookRouter.post('/create',createBook)
-BookRouter.delete('/:id', deleteBook)
+BookRouter.post('/create',createBook);
+BookRouter.delete('/:id', deleteBook);
 
 export default BookRouter

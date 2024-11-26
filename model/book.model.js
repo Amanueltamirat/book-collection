@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 // Define the Book schema
 const bookSchema = new mongoose.Schema({
+    
     title: {
         type: String,
         required: ['true','Please enter book!'], 
@@ -16,7 +17,8 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: ['true','Please write isbn!'], 
         unique: true,   
-        trim: true     
+        trim: true,
+        min:13     
     },
     publishedYear: {
         type: Number,

@@ -1,17 +1,25 @@
 import Book from "../model/book.model.js";
-
+import {body, check, validationResult} from 'express-validator'
 
 export const allBooks = async(req,res)=>{
     try {
         const books = await Book.find();
+        if(books.length === 0){
+            return res.status(404).json({mesasge:"No books found"})
+        }
         res.status(201).json(books)
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 }
 
- export const createBook = async (req, res) => {
+ export const createBook = ( [check('title').notEmpty()],check('author').notEmpty(),check('isbn').isNumeric().isLength({min:13,max:13}),async(req, res) => {
     try {
+
+          const errors = validationResult(req)
+         if (!errors.isEmpty()) {  
+          return res.status(401).json({errors: errors.array()})
+         }
         const { title, author, isbn, publishedYear } = req.body;
 
         const newBook = new Book({ title, author, isbn, publishedYear });
@@ -21,9 +29,11 @@ export const allBooks = async(req,res)=>{
         res.status(201).json(newBook);
 
     } catch (error) {
-        res.status(400).json({ message:error.message });
+        res.status(500).json({ message:error.message });
     }
-}
+})
+
+
 export const getRecommendedBook = async(req,res)=>{
     try {
         const books = await Book.aggregate([
@@ -91,16 +101,22 @@ export const getBookById =    async (req, res) => {
 }
 
 
-export const updateBook =  async (req, res) => {
+export const updateBook =  ([check('title').notEmpty()],check('author').notEmpty(),check('isbn').isNumeric().isLength({min:13,max:13}) ,async (req, res) => {
     try {
-        const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+
+        const errors = validationResult(req)
+         if (!errors.isEmpty()) {  
+          return res.status(401).json({errors: errors.array()})
+         }
+
+        const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body);
         if (!updatedBook) return res.status(404).json({ error: 'Book not found' });
-      
         res.status(201).json(updatedBook);
+        
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
-}
+})
 
 export const deleteBook =  async (req, res) => {
     try {
