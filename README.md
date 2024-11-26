@@ -38,9 +38,11 @@ install
   -http://localhost:5000/api/books
   ```
 Open the following URL in your browser to see live demo:
-  ``` https://book-collection-cusa.onrender.com/api/books
-  -http://localhost:5000/api/books/favorites
-  -http://localhost:5000/api/books/book-recommended
-  -http://localhost:5000/api/books/:id ```
+  ```
+  - https://book-collection-cusa.onrender.com/api/books
+  - http://localhost:5000/api/books/favorites
+  - http://localhost:5000/api/books/book-recommended
+  - http://localhost:5000/api/books/:id
+    ```
 
 
