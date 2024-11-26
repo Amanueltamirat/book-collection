@@ -33,11 +33,7 @@ install
    ```
    npm run dev
    ```
-5. Run the server locally by using the following url
-   ```
-  -http://localhost:5000/api/books
-  ```
-Open the following URL in your browser to see live demo:
+5.Run the server locally by using the following url:
   ```
   - https://book-collection-cusa.onrender.com/api/books
   - http://localhost:5000/api/books/favorites
