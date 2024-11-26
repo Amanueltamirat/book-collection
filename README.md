@@ -41,8 +41,8 @@ install
   - http://localhost:5000/api/books/:id
 
   
-Open the following URL in your browser to see live demo:
 
 ```
-https://book-collection-cusa.onrender.com/api/books
+Open the following URL in your browser to see live demo:
 ```
+https://book-collection-cusa.onrender.com/api/books
