@@ -34,12 +34,12 @@ install
    npm run dev
    ```
 5. Run the server locally by using the following url
-   
+   ```
   -http://localhost:5000/api/books
   -http://localhost:5000/api/books/favorites
   -http://localhost:5000/api/books/book-recommended
   -http://localhost:5000/api/books/:id
-  
+  ```
 Open the following URL in your browser to see live demo:
 
 ```
