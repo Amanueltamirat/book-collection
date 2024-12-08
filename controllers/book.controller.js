@@ -1,4 +1,4 @@
-import Book from "../model/book.model.js";
+import Book from "../models/book.model.js";
 import {body, check, validationResult} from 'express-validator'
 
 export const allBooks = async(req,res)=>{
