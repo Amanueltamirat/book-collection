@@ -1,5 +1,15 @@
 # book-collection-app
 A RESTful API for managing a collection of books whith user Authentication and Role-Based Access Control, built using Node.js, Express, and MongoDB.
+
+## Access is restricted to certain routes based on roles:
+
+###  Admin Only:
+GET /books/all: Fetch all books (visible only to admins).
+
+###  Users Only:
+GET /books: Fetch books based on user-specific criteria (e.g. getfavoriteBook).
+POST /books: Add a new book (users can only create).
+
 ## The server has the following routes:
 ```
 - Get /api/auth/getme  to see user informations
@@ -41,6 +51,10 @@ install
    ```
 5.Run the server locally by using the following url:
   ```
+  - http://localhost:5000/api/auth/signup
+  - http://localhost:5000/api/auth/signin
+  - http://localhost:5000/api/users/profile/:username
+  - http://localhost:5000/api/users/update
   - https://book-collection-cusa.onrender.com/api/books
   - http://localhost:5000/api/books/favorites
   - http://localhost:5000/api/books/book-recommended
