@@ -1,10 +1,16 @@
 # book-collection-app
-A RESTful API for managing a collection of books, built using Node.js, Express, and MongoDB.
+A RESTful API for managing a collection of books whith user Authentication and Role-Based Access Control, built using Node.js, Express, and MongoDB.
 ## The server has the following routes:
 ```
-- Get /api/books    for all books
+- Get /api/auth/getme  to see user informations
+- Post /api/auth/signup   to sign-up.
+- Post /api/auth/signin   to log-in.
+- Post /api/auth/signout  to log-out.
+- get /api/users/profile/:username   to users infromation through username
+- get /api/users/update    to update authorized use.
+- Get /api/books   Only admins have access
 - Get /api/books/:id    for single book using the id
-- Get /api/books/favorites    to see your favorites books
+- Get /api/books/favorites    to see your favorites books,and Only users have access.
 - Get /api/books/book-recommended    to see books recommended for you
 - Put /api/books/:id    to update single book by using id
 - Patch /api/books/toggle-favorite/:id    to toggle book favorite or not
