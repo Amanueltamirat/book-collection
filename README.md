@@ -45,4 +45,4 @@ install
 ```
 Open the following URL in your browser to see live demo:
 ```
-https://book-collection-cusa.onrender.com/api/books
+https://book-collection-cusa.onrender.com
