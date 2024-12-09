@@ -7,7 +7,7 @@ const BookRouter = express.Router();
 
 BookRouter.get('/',protectRoute,authozieRoles("admin"),allBooks)
 BookRouter.get('/favorites', protectRoute,authozieRoles("user"),getfavoriteBook)
-BookRouter.get('/book-recommended',getRecommendedBook);
+BookRouter.get('/book-recommended',protectRoute ,getRecommendedBook);
 BookRouter.get('/:id',getBookById);
 BookRouter.put('/:id',updateBook);
 BookRouter.patch('/toggle-favorite/:id',toggleFavoriteBook)

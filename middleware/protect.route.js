@@ -2,11 +2,11 @@ import jwt from "jsonwebtoken";
 import User from '../models/user.model.js'
 
 const protectRoute = async(req,res,next)=>{
-       let authHeader = req.headers.authorization || req.headers.Authorization
+       let authHeader = req.headers || req.headers.authorization || req.headers.Authorization || req.headers.authorization.startsWith('Bearer')
        let token;
 
-        if(authHeader || authHeader.startsWith('Bearer')){
-        token = authHeader.split(' ')[1];
+        if(authHeader){
+        token = authHeader.authorization.split(' ')[1];
     };
 
 

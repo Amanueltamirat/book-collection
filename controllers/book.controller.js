@@ -20,9 +20,8 @@ export const allBooks = async(req,res)=>{
          if (!errors.isEmpty()) {  
           return res.status(401).json({errors: errors.array()})
          }
-        const { title, author, isbn, publishedYear } = req.body;
-
-        const newBook = new Book({ title, author, isbn, publishedYear });
+        const { title, isbn, publishedYear } = req.body;
+        const newBook = new Book({ title, author: req.user.usedId, isbn, publishedYear });
 
         await newBook.save();
 
@@ -35,8 +34,12 @@ export const allBooks = async(req,res)=>{
 
 
 export const getRecommendedBook = async(req,res)=>{
+
+ const author = req.user;
+
     try {
-        const books = await Book.aggregate([
+         if(author.role === 'user'){
+            const books = await Book.aggregate([
             {
                 $sample:{
                     size:2,},
@@ -51,9 +54,13 @@ export const getRecommendedBook = async(req,res)=>{
                     publishedYear:1,
                     isFavorite:1
                 }
-            }
+            },
+
         ])
-        res.status(201).json(books);
+     return  res.status(201).json(books);
+ }
+  return res.status(401).json({message:"Only user can get recommended booksx"})
+        
 
     } catch (error) {
         console.log('error in getting recommended Books');

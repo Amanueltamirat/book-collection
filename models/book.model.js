@@ -8,11 +8,16 @@ const bookSchema = new mongoose.Schema({
         required: ['true','Please enter book!'], 
         trim: true      
     },
+    // author: {
+    //     type: String,
+    //     required: ['true','Please enter  author name!'], 
+    //     trim: true      
+    // },
     author: {
-        type: String,
-        required: ['true','Please enter  author name!'], 
-        trim: true      
-    },
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+			required: true,
+		},
     isbn: {
         type: String,
         required: ['true','Please write isbn!'], 
